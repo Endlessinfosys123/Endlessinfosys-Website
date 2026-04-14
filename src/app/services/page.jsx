@@ -24,39 +24,45 @@ import Link from "next/link";
 const services = [
   { 
     title: "Search Intelligence", 
+    slug: "seo",
     icon: Search, 
     color: "purple", 
-    desc: "Architecting your organic dominance with data-driven search engineering and authority building." 
+    desc: "Architecting your organic dominance with data-driven search engineering. We go beyond 'ranking' to build long-term site authority and semantic dominance across the digital landscape." 
   },
   { 
     title: "Precision Ads", 
+    slug: "ppc",
     icon: Target, 
     color: "pink", 
-    desc: "High-velocity paid campaigns that convert every click into measurable business capital." 
+    desc: "High-velocity paid campaigns that convert every click into measurable business capital. Our predictive bidding models ensure your budget is deployed with surgical accuracy." 
   },
   { 
     title: "Social Narratives", 
+    slug: "social-media",
     icon: Share2, 
     color: "teal", 
-    desc: "Crafting resonant digital stories that foster deep brand loyalty across global platforms." 
+    desc: "Crafting resonant digital stories that foster deep brand loyalty across global platforms. We build ecosystems of community engagement that turn followers into advocates." 
   },
   { 
     title: "Direct Conversion", 
+    slug: "email-marketing",
     icon: Mail, 
     color: "yellow", 
-    desc: "Nurturing relationships through automated, hyper-personalized communication architectures." 
+    desc: "Nurturing relationships through automated, hyper-personalized communication architectures. Every email is a calculated step toward a lifelong customer relationship." 
   },
   { 
     title: "Creative Content", 
+    slug: "content-marketing",
     icon: FileText, 
     color: "purple", 
-    desc: "Building authority through value-driven storytelling and immersive cinematic media." 
+    desc: "Building authority through value-driven storytelling and immersive cinematic media. We create high-value assets that establish your brand as a primary industry thought leader." 
   },
   { 
     title: "360° Branding", 
+    slug: "branding",
     icon: Layers, 
     color: "pink", 
-    desc: "A holistic approach to brand DNA—from visual identity to strategic cultural positioning." 
+    desc: "A holistic approach to brand DNA—from visual identity to strategic cultural positioning. We distill your brand's core soul into an unforgettable visual and verbal language." 
   },
 ];
 
@@ -68,6 +74,7 @@ const EditorialServiceCard = ({ service, index }) => (
     transition={{ delay: index * 0.1 }}
     className="group relative bento-card p-10 flex flex-col justify-between bg-white border-gray-100 hover:border-brand-purple/20 transition-all duration-700 h-full"
   >
+    <Link href={`/services/${service.slug}`} className="absolute inset-0 z-20" />
     <div className="flex justify-between items-start">
       <div className={`p-5 rounded-2xl transition-all duration-500 group-hover:scale-110 shadow-lg ${
         service.color === "purple" ? "bg-brand-purple text-white shadow-brand-purple/20" :
@@ -89,7 +96,7 @@ const EditorialServiceCard = ({ service, index }) => (
       </p>
     </div>
 
-    <div className="mt-8 pt-8 border-t border-gray-50 flex items-center gap-2 text-xs font-black uppercase tracking-widest text-brand-purple opacity-0 group-hover:opacity-100 transition-opacity">
+    <div className="mt-8 pt-8 border-t border-gray-50 flex items-center gap-2 text-xs font-black uppercase tracking-widest text-brand-purple">
       Learn Methodology <ArrowUpRight size={14} />
     </div>
   </motion.div>

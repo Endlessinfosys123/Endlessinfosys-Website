@@ -1,4 +1,4 @@
-import { Syne, DM_Sans, Playfair_Display } from "next/font/google";
+import { Syne, Plus_Jakarta_Sans, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -12,10 +12,10 @@ const syne = Syne({
   weight: ["400", "500", "600", "700", "800"],
 });
 
-const dmSans = DM_Sans({
+const plusJakarta = Plus_Jakarta_Sans({
   variable: "--font-body",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 const playfair = Playfair_Display({
@@ -41,7 +41,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${syne.variable} ${dmSans.variable} ${playfair.variable} h-full antialiased scroll-smooth`}
+      className={`${syne.variable} ${plusJakarta.variable} ${playfair.variable} h-full antialiased scroll-smooth`}
     >
       <body className="min-h-full font-body text-brand-gray bg-white selection:bg-brand-purple/20 flex flex-col mesh-bg noise-overlay">
         <CustomCursor />

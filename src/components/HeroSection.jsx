@@ -102,7 +102,8 @@ export default function HeroSection() {
               className="text-xl md:text-2xl text-brand-gray/60 max-w-2xl leading-relaxed font-medium pt-8"
             >
               We are the creative powerhouse for brands that demand more than the ordinary. 
-              Engineering success through <span className="text-brand-dark font-bold underline decoration-brand-pink/30 decoration-4">high-velocity</span> strategy.
+              Engineering high-impact success through <span className="text-brand-dark font-bold underline decoration-brand-pink/30 decoration-4">Predictive Analytics</span>, 
+              cinematic storytelling, and conversion-optimized architectures that scale with your ambition across the global digital landscape.
             </motion.p>
           </div>
 

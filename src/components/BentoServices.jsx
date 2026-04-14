@@ -1,8 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Search, Globe, Mail, PenTool, Layout } from "lucide-react";
+import { Search, Globe, Mail, PenTool, Layout, ArrowRight } from "lucide-react";
 import MagneticHelper from "./MagneticHelper";
+import Link from "next/link";
 
 const Instagram = (props) => (
   <svg
@@ -26,6 +27,7 @@ const Instagram = (props) => (
 const services = [
   {
     title: "SEO Optimization",
+    slug: "seo",
     description: "Architecting your visibility with data-driven search engineering.",
     icon: Search,
     color: "from-blue-500 to-cyan-400",
@@ -33,6 +35,7 @@ const services = [
   },
   {
     title: "PPC Advertising",
+    slug: "ppc",
     description: "High-precision targeting that converts clicks into capital.",
     icon: Rocket,
     color: "from-brand-purple to-brand-pink",
@@ -40,13 +43,15 @@ const services = [
   },
   {
     title: "Social Media",
+    slug: "social-media",
     description: "Crafting narratives that resonate and foster brand loyalty.",
     icon: Instagram,
     color: "from-pink-500 to-rose-400",
     size: "col-span-1 row-span-2",
   },
   {
-    title: "Web Development",
+    title: "360° Branding",
+    slug: "branding",
     description: "Building immersive digital architectures that scale.",
     icon: Layout,
     color: "from-brand-teal to-brand-purple",
@@ -54,6 +59,7 @@ const services = [
   },
   {
     title: "Content Marketing",
+    slug: "content-marketing",
     description: "Value-driven storytelling that empowers your audience.",
     icon: PenTool,
     color: "from-brand-yellow to-orange-400",
@@ -61,6 +67,7 @@ const services = [
   },
   {
     title: "Email Marketing",
+    slug: "email-marketing",
     description: "Direct-to-consumer strategies that maximize ROI.",
     icon: Mail,
     color: "from-brand-purple to-indigo-400",
@@ -72,13 +79,14 @@ const ServiceCard = ({ service, index }) => {
   const Icon = service.icon || Search;
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: index * 0.1 }}
-      className={`${service.size} group min-h-[200px] bento-card p-10 flex flex-col justify-between hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer relative overflow-hidden shadow-glow-purple`}
-    >
+    <Link href={`/services/${service.slug}`} className={`${service.size}`}>
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: index * 0.1 }}
+        className={`h-full group bento-card p-10 flex flex-col justify-between hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer relative overflow-hidden shadow-glow-purple`}
+      >
       <div className="flex justify-between items-start relative z-10">
         <motion.div 
           animate={{ 
@@ -108,6 +116,7 @@ const ServiceCard = ({ service, index }) => {
       {/* Subtle Background Glow */}
       <div className={`absolute -bottom-10 -right-10 w-40 h-40 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-5 blur-[60px] transition-opacity duration-700`} />
     </motion.div>
+    </Link>
   );
 };
 

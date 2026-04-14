@@ -101,11 +101,19 @@ export default function AboutPage() {
               <div className="space-y-6 text-brand-gray/80 text-xl leading-relaxed font-medium">
                 <p>
                   Welcome to EndlessInfosys. We are a dynamic collective of digital architects dedicated to 
-                  helping businesses thrive in the high-velocity digital age.
+                  helping businesses thrive in the high-velocity digital age. Our foundation is built on the 
+                  belief that digital marketing shouldn't just be about data; it should be about human connection 
+                  and resonant storytelling.
                 </p>
                 <p>
-                  With a team of passionate professionals, we're here to make your online presence 
-                  stand out and drive real results.
+                  We blend innovative technology with deep human insight to architect digital ecosystems that don't 
+                  just survive the competition—they redefine it. From Gandhinagar to the global stage, we scale 
+                  with your ambition, ensuring every touchpoint is a catalyst for measurable growth.
+                </p>
+                <p>
+                   Our approach is what we call "The Endless Method"—a proprietary blend of predictive analytics, 
+                   cinematic creative direction, and performance-first strategy. We don't just provide services; 
+                   we build lasting legacies for brands that demand absolute excellence.
                 </p>
               </div>
               <div className="flex flex-wrap gap-4 pt-4">

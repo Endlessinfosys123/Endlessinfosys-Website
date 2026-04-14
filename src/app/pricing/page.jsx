@@ -11,48 +11,51 @@ const plans = [
   {
     name: "Standard",
     price: "25k",
-    tagline: "For Growing Brands",
+    tagline: "Building the Foundation",
+    description: "Ideal for startups and local businesses looking to establish a consistent professional presence. This plan focuses on high-impact visual design and algorithmic social reach to build immediate brand awareness.",
     color: "pink",
     features: [
-      "FB & IG Marketing",
-      "Creative Graphic Designs",
-      "Creative Ads Video",
-      "Campaign Management",
-      "Conversion Optimization",
-      "Account Management"
+      "FB & IG Strategic Rollout",
+      "Editorial Graphic Architectures",
+      "Kinetic Video Advertisements",
+      "Baseline Campaign Management",
+      "Core Conversion Optimization",
+      "Dedicated Account Support"
     ]
   },
   {
     name: "Gold",
     price: "50k",
-    tagline: "The Growth Catalyst",
+    tagline: "Velocity & Dominance",
+    description: "Designed for scaling brands that demand aggressive market share expansion. This 'Calculated Growth' architecture layers SEO authority and lead generation on top of a robust social foundation.",
     color: "purple",
     isPopular: true,
     features: [
       "Everything in Standard",
-      "Brand Boosting Strategy",
-      "SEO & Keyword Research",
-      "Personalized Strategy",
-      "Leads Generation",
-      "Influencer Marketing",
-      "IT Consultation",
-      "Email Marketing"
+      "Brand-First Market Positioning",
+      "Semantic SEO & Technical Audits",
+      "Bespoke Funnel Architectures",
+      "High-Precision Lead Generation",
+      "Collaborative Influencer PR",
+      "IT Systems Optimization",
+      "Direct Lifecycle Email Flows"
     ]
   },
   {
     name: "Premium",
     price: "75k",
-    tagline: "The Full Spectrum",
+    tagline: "The Industrial Spectrum",
+    description: "Our most advanced digital architecture. For enterprises requiring absolute digital supremacy. Includes 360° branding alchemization, AI-driven chatbots, and hyper-targeted geo-fencing strategies.",
     color: "teal",
     features: [
       "Everything in Gold",
-      "Geo Fencing Strategy",
-      "360° Branding Consultation",
-      "Search Engine Marketing",
-      "WhatsApp Chatbot Setup",
-      "Effective Lead Gen 2.0",
-      "24/7 Priority Support",
-      "IT Systems Audit"
+      "Advanced Geo-Fencing (Location Ads)",
+      "360° Brand Identity Alchemy",
+      "Search Engine Mastery (SEM)",
+      "AI-Powered Chatbot Deployment",
+      "Lead Gen 2.0 (Predictive Scoring)",
+      "24/7 VIP Architecture Support",
+      "Full Stack Infrastructure Audit"
     ]
   }
 ];
@@ -81,9 +84,10 @@ const BentoPricingCard = ({ plan, index }) => (
     )}
 
     <div>
-      <div className="space-y-2 mb-8">
+      <div className="space-y-4 mb-8">
         <h3 className="text-3xl font-display font-black text-brand-dark">{plan.name}</h3>
         <p className="font-serif italic text-brand-gray/60 font-normal">{plan.tagline}</p>
+        <p className="text-brand-gray text-sm leading-relaxed font-medium pt-2 border-t border-gray-50 uppercase tracking-tighter">{plan.description}</p>
       </div>
 
       <div className="flex items-baseline gap-1 mb-10">
