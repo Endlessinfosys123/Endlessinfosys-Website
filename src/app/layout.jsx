@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { Syne, DM_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
@@ -18,7 +17,7 @@ const dmSans = DM_Sans({
   weight: ["400", "500", "600", "700"],
 });
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "EndlessInfosys | We Are the Architects of Your Online Success",
   description: "Let's Craft Your Digital Success Story. Expert digital marketing services in Gandhinagar, Gujarat. SEO, PPC, Social Media, and more.",
   keywords: ["Digital Marketing", "SEO", "PPC", "Social Media Marketing", "EndlessInfosys", "Gandhinagar", "Gujarat"],
@@ -30,9 +29,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}) {
   return (
     <html
       lang="en"
