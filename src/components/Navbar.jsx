@@ -15,19 +15,38 @@ const navLinks = [
   { name: "Contact", href: "/contact" },
 ];
 
-const Logo = () => (
-  <div className="flex items-center gap-2 group">
-    <div className="relative h-10 w-40">
-      <Image 
-        src="/images/logo-horizontal.png" 
-        alt="EndlessInfosys Logo" 
-        fill
-        className="object-contain"
-        priority
-      />
-    </div>
-  </div>
-);
+const Logo = () => {
+  const [imgError, setImgError] = useState(false);
+
+  return (
+    <Link href="/" className="flex items-center gap-2 group">
+      <div className="relative h-10 w-40 flex items-center">
+        {!imgError ? (
+          <Image 
+            src="/images/logo-horizontal.png" 
+            alt="EndlessInfosys Logo" 
+            fill
+            className="object-contain"
+            priority
+            onError={() => setImgError(true)}
+          />
+        ) : (
+          <div className="flex items-center gap-2">
+            <div className="p-2 rounded-lg bg-gradient-to-br from-brand-purple to-brand-teal text-white">
+              <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M50 50L50 10C50 10 90 10 90 50L50 50Z" fill="white" />
+                <path d="M50 50L90 50C90 50 90 90 50 90L50 50Z" fill="white" fillOpacity="0.8" />
+                <path d="M50 50L50 90C50 90 10 90 10 50L50 50Z" fill="white" fillOpacity="0.5" />
+                <path d="M50 50L10 50C10 50 10 10 50 10L50 50Z" fill="white" fillOpacity="0.3" />
+              </svg>
+            </div>
+            <span className="font-display font-black text-xl text-brand-dark">EndlessInfosys</span>
+          </div>
+        )}
+      </div>
+    </Link>
+  );
+};
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
