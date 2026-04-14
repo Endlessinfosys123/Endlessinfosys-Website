@@ -1,177 +1,220 @@
 "use client";
 
+import { motion } from "framer-motion";
 import AnimatedSection from "@/components/AnimatedSection";
-import { Eye, Target, Sparkles, ShieldCheck, Heart, Zap, TrendingUp } from "lucide-react";
+import { Eye, Target, Sparkles, ShieldCheck, Heart, Zap, TrendingUp, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+import MagneticHelper from "@/components/MagneticHelper";
 
-const BrandChip = ({ label, color }) => (
-  <div className={`px-4 py-2 rounded-full font-bold text-xs uppercase tracking-widest ${
-    color === "purple" ? "bg-brand-purple/10 text-brand-purple" :
-    color === "pink" ? "bg-brand-pink/10 text-brand-pink" :
-    "bg-brand-teal/10 text-brand-teal"
-  }`}>
-    {label}
-  </div>
+const EditorialQuote = ({ quote, author, delay = 0.2 }) => (
+  <motion.div
+    initial={{ opacity: 0, scale: 0.95 }}
+    whileInView={{ opacity: 1, scale: 1 }}
+    viewport={{ once: true }}
+    transition={{ delay, duration: 1 }}
+    className="relative p-12 md:p-20 bg-brand-purple/5 rounded-[60px] overflow-hidden border border-brand-purple/10"
+  >
+    <div className="absolute top-0 right-0 w-64 h-64 bg-brand-purple/10 blur-[80px] -translate-y-1/2 translate-x-1/2" />
+    <blockquote className="relative z-10">
+      <p className="text-3xl md:text-5xl font-serif italic text-brand-purple leading-tight font-normal">
+        "{quote}"
+      </p>
+      {author && (
+        <cite className="block mt-8 text-brand-dark font-display font-black uppercase tracking-widest not-italic">
+          — {author}
+        </cite>
+      )}
+    </blockquote>
+  </motion.div>
 );
 
-const ValueCard = ({ icon: Icon, title, desc }) => (
-  <div className="bg-bg-cream p-8 rounded-3xl border border-brand-yellow/10 flex flex-col items-center text-center group hover:-translate-y-2 transition-all duration-300">
-    <div className="w-16 h-16 rounded-2xl bg-white flex items-center justify-center text-brand-yellow mb-6 shadow-sm group-hover:scale-110 transition-all">
-      <Icon size={32} />
+const BrandChip = ({ label, color }) => (
+  <MagneticHelper strength={0.3}>
+    <div className={`px-6 py-3 rounded-full font-bold text-sm uppercase tracking-widest shadow-sm border ${
+      color === "purple" ? "bg-white text-brand-purple border-brand-purple/20" :
+      color === "pink" ? "bg-white text-brand-pink border-brand-pink/20" :
+      "bg-white text-brand-teal border-brand-teal/20"
+    }`}>
+      {label}
     </div>
-    <h4 className="text-lg font-display font-black mb-2">{title}</h4>
-    <p className="text-brand-gray text-xs leading-relaxed uppercase tracking-wider font-bold">{desc}</p>
-  </div>
+  </MagneticHelper>
 );
 
 export default function AboutPage() {
   return (
-    <div className="flex flex-col">
-      {/* 1. Hero */}
-      <section className="pt-32 pb-20 bg-bg-soft relative overflow-hidden">
+    <div className="flex flex-col mesh-bg noise-overlay bg-white">
+      {/* 1. Cinematic Hero */}
+      <section className="pt-40 pb-24 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <nav className="flex gap-2 text-xs font-bold uppercase tracking-widest text-brand-gray mb-6">
-            <Link href="/" className="hover:text-brand-purple">Home</Link>
+          <motion.nav 
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="flex gap-3 text-xs font-bold uppercase tracking-widest text-brand-gray/60 mb-10"
+          >
+            <Link href="/" className="hover:text-brand-purple transition-colors">Home</Link>
             <span>/</span>
-            <span className="text-brand-purple">About Us</span>
-          </nav>
+            <span className="text-brand-purple">Our Story</span>
+          </motion.nav>
+          
           <AnimatedSection>
-            <h1 className="text-5xl md:text-7xl font-display font-black mb-4">
-              About <span className="text-brand-purple">EndlessInfosys</span>
+            <h1 className="text-6xl md:text-9xl font-display font-black mb-8 leading-[0.9] text-brand-dark">
+              Architecting <br />
+              <span className="font-serif italic text-brand-purple font-normal">Digital Futures</span>
             </h1>
-            <div className="h-1.5 w-32 bg-gradient-to-r from-brand-purple to-brand-pink rounded-full" />
-          </AnimatedSection>
-        </div>
-        {/* Background Decorative */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-brand-purple/5 blur-[100px] -translate-y-1/2 translate-x-1/2" />
-      </section>
-
-      {/* 2. About Detail Section */}
-      <section className="section-padding bg-white">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-          <AnimatedSection direction="left">
-             {/* Creative illustrated graphic placeholder */}
-             <div className="relative w-full aspect-square bg-bg-lavender rounded-[40px] p-12 overflow-hidden shadow-inner">
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-brand-purple rounded-full mix-blend-multiply opacity-20 animate-blob" />
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-brand-pink rounded-full mix-blend-multiply opacity-20 animate-blob animation-delay-2000" />
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-brand-teal rounded-full mix-blend-multiply opacity-20 animate-blob animation-delay-4000" />
-                <div className="relative z-10 w-full h-full border-4 border-white/50 rounded-[30px] flex items-center justify-center">
-                   <div className="text-6xl font-display font-black text-brand-purple/40">EI</div>
-                </div>
-             </div>
-          </AnimatedSection>
-
-          <AnimatedSection direction="right" className="space-y-8">
-            <h2 className="text-3xl md:text-4xl font-display font-black text-brand-dark">
-              Your Trusted Digital Partner in the Marketing Landscape
-            </h2>
-            <div className="space-y-6 text-brand-gray text-lg leading-relaxed">
-              <p>
-                Welcome to EndlessInfosys, your trusted partner in the digital marketing landscape. 
-                We are a dynamic and innovative digital marketing company dedicated to helping 
-                businesses thrive in the digital age.
-              </p>
-              <p>
-                With a team of passionate professionals, we're here to make your online presence 
-                stand out and drive real results. We blend cutting-edge technology with 
-                human-centric strategies to craft stories that resonate.
-              </p>
-            </div>
-            <div className="flex flex-wrap gap-4 pt-4">
-              <BrandChip label="Innovative" color="purple" />
-              <BrandChip label="Passionate" color="pink" />
-              <BrandChip label="Result-oriented" color="teal" />
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
-
-      {/* 3. Vision & Mission Cards */}
-      <section className="py-20 bg-bg-soft">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12">
-          <AnimatedSection direction="left" className="bg-bg-lavender p-10 md:p-16 rounded-[40px] border border-brand-purple/5 shadow-xl shadow-brand-purple/5">
-            <div className="w-16 h-16 rounded-2xl bg-white flex items-center justify-center text-brand-purple mb-8 shadow-sm">
-              <Eye size={36} />
-            </div>
-            <h3 className="text-3xl font-display font-black mb-6">Our Vision</h3>
-            <p className="text-brand-gray text-lg leading-relaxed">
-              At EndlessInfosys, we envision a future where businesses thrive in the digital landscape, 
-              propelled by innovation and guided by a profound understanding of their target audiences. 
-              Our vision is to be the catalyst for this transformation, empowering organizations of all sizes.
-            </p>
-          </AnimatedSection>
-
-          <AnimatedSection direction="right" className="bg-bg-mint p-10 md:p-16 rounded-[40px] border border-brand-teal/5 shadow-xl shadow-brand-teal/5">
-            <div className="w-16 h-16 rounded-2xl bg-white flex items-center justify-center text-brand-teal mb-8 shadow-sm">
-              <Target size={36} />
-            </div>
-            <h3 className="text-3xl font-display font-black mb-6">Our Mission</h3>
-            <p className="text-brand-gray text-lg leading-relaxed">
-              Our mission is simple: to empower businesses of all sizes with the digital strategies 
-              they need to succeed. We believe that every brand, no matter how big or small, 
-              has the potential to grow and excel in the ever-evolving digital world. 
-              We aim to be the catalyst for your digital success.
+            <p className="text-brand-gray text-xl md:text-2xl max-w-2xl leading-relaxed font-medium">
+              We don't just follow the digital marketing game; we redefine it. 
+              Propelling brands beyond the ordinary into the extraordinary.
             </p>
           </AnimatedSection>
         </div>
       </section>
 
-      {/* 4. What Sets Us Apart */}
-      <section className="section-padding bg-white overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-           <AnimatedSection direction="left">
-              <h2 className="text-4xl md:text-5xl font-display font-black mb-8">What Sets Us <span className="text-brand-pink">Apart?</span></h2>
-              <p className="text-brand-gray text-lg leading-relaxed mb-10">
-                EndlessInfosys stands at the forefront of innovation, transforming digital marketing with mastery. 
-                Our algorithms predict trends and craft resonant strategies, turning insights into impactful, 
-                conversation-driving campaigns. We dont just follow the digital marketing game; we redefine it, 
-                propelling brands beyond the ordinary.
-              </p>
-              <div className="flex flex-col gap-6">
-                 {[
-                   { label: "Trend Prediction", color: "purple", icon: TrendingUp },
-                   { label: "Resonant Campaigns", color: "pink", icon: Heart },
-                   { label: "Beyond Ordinary", color: "teal", icon: Sparkles }
-                 ].map((chip) => (
-                   <div key={chip.label} className="flex items-center gap-4 group">
-                      <div className={`w-12 h-12 rounded-xl flex items-center justify-center group-hover:scale-110 transition-all ${
-                         chip.color === "purple" ? "bg-bg-lavender text-brand-purple" :
-                         chip.color === "pink" ? "bg-[#FFF0F0] text-brand-pink" :
-                         "bg-bg-mint text-brand-teal"
-                      }`}>
-                         <chip.icon size={24} />
-                      </div>
-                      <span className="text-lg font-display font-black text-brand-dark">{chip.label}</span>
+      {/* 2. Asymmetrical Content Grid */}
+      <section className="pb-32 px-6">
+        <div className="max-w-7xl mx-auto space-y-32">
+          
+          {/* Story Block 1 */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div className="lg:col-span-7 relative group">
+              <div className="absolute inset-0 bg-gradient-to-br from-brand-purple to-brand-pink rounded-[60px] rotate-2 scale-[1.02] opacity-10 group-hover:rotate-0 transition-transform duration-700" />
+              <div className="relative aspect-[16/10] bg-white rounded-[60px] p-1 shadow-2xl overflow-hidden">
+                <div className="w-full h-full bg-bg-soft rounded-[59px] flex items-center justify-center p-20">
+                   <div className="relative text-8xl md:text-[150px] font-display font-black text-brand-purple/10 selection:bg-brand-purple/10">
+                      EST. 2020
+                      <motion.div 
+                        initial={{ width: 0 }}
+                        whileInView={{ width: "100%" }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1, delay: 0.5 }}
+                        className="absolute bottom-4 left-0 h-4 bg-brand-pink/20 rounded-full"
+                      />
                    </div>
-                 ))}
+                </div>
               </div>
-           </AnimatedSection>
+            </div>
+            
+            <div className="lg:col-span-5 space-y-8">
+              <h2 className="text-4xl md:text-5xl font-display font-black text-brand-dark leading-tight">
+                Where Strategy <br />
+                <span className="font-serif italic text-brand-teal font-normal">Meets Soul</span>
+              </h2>
+              <div className="space-y-6 text-brand-gray/80 text-xl leading-relaxed font-medium">
+                <p>
+                  Welcome to EndlessInfosys. We are a dynamic collective of digital architects dedicated to 
+                  helping businesses thrive in the high-velocity digital age.
+                </p>
+                <p>
+                  With a team of passionate professionals, we're here to make your online presence 
+                  stand out and drive real results.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-4 pt-4">
+                <BrandChip label="Innovative" color="purple" />
+                <BrandChip label="Passionate" color="pink" />
+                <BrandChip label="Limitless" color="teal" />
+              </div>
+            </div>
+          </div>
 
-           <AnimatedSection direction="right" className="relative h-[500px] flex items-center justify-center">
-              <div className="absolute w-full h-full bg-mesh opacity-30 rounded-[60px]" />
-              <div className="relative w-72 h-72 bg-white rounded-3xl shadow-2xl flex items-center justify-center p-10 group">
-                 <div className="absolute inset-0 bg-gradient-to-br from-brand-purple/5 to-brand-pink/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
-                 <ShieldCheck size={120} className="text-brand-purple relative z-10" />
+          {/* Quote Block */}
+          <EditorialQuote 
+            quote="Our mission is to empower businesses with the digital strategies they need to succeed in an ever-evolving world." 
+            author="The Endless Team"
+          />
+
+          {/* Vision & Mission Bento */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <motion.div 
+              whileHover={{ y: -10 }}
+              className="p-12 md:p-16 rounded-[60px] bg-white border border-gray-100 shadow-2xl shadow-gray-200/50 flex flex-col justify-between"
+            >
+              <div className="space-y-8">
+                <div className="w-20 h-20 rounded-3xl bg-brand-purple/10 flex items-center justify-center text-brand-purple">
+                  <Eye size={40} />
+                </div>
+                <h3 className="text-4xl font-display font-black text-brand-dark">Our Vision</h3>
+                <p className="text-brand-gray/80 text-xl leading-relaxed font-medium">
+                  We envision a future where businesses thrive in the digital landscape, 
+                  propelled by innovation and guided by a profound understanding of their audiences.
+                </p>
               </div>
-              <div className="absolute top-10 left-10 w-24 h-24 bg-brand-yellow/10 rounded-full animate-bounce" />
-           </AnimatedSection>
+              <div className="mt-12 flex justify-end">
+                <ArrowUpRight size={48} className="text-brand-purple/20" />
+              </div>
+            </motion.div>
+
+            <motion.div 
+              whileHover={{ y: -10 }}
+              className="p-12 md:p-16 rounded-[60px] bg-brand-dark text-white shadow-2xl flex flex-col justify-between"
+            >
+              <div className="space-y-8">
+                <div className="w-20 h-20 rounded-3xl bg-white/10 flex items-center justify-center text-white">
+                  <Target size={40} />
+                </div>
+                <h3 className="text-4xl font-display font-black text-white">Our Mission</h3>
+                <p className="text-white/60 text-xl leading-relaxed font-medium">
+                  To empower brands with the digital precision they need to excel. 
+                  We aim to be the catalyst for your digital success story, scaling with your ambition.
+                </p>
+              </div>
+              <div className="mt-12 flex justify-end">
+                <ArrowUpRight size={48} className="text-white/10" />
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* 5. Team Values Strip */}
-      <section className="section-padding bg-bg-soft">
-        <div className="max-w-7xl mx-auto px-6">
-           <AnimatedSection className="text-center mb-16">
-              <h2 className="text-4xl font-display font-black">Our Team <span className="text-brand-yellow">Values</span></h2>
-              <p className="text-brand-gray mt-4 max-w-xl mx-auto">The core principles that drive every project we touch.</p>
-           </AnimatedSection>
-           
-           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-              <ValueCard icon={ShieldCheck} title="Transparency" desc="Clear, honest communication in every step." />
-              <ValueCard icon={Zap} title="Creativity" desc="Thinking outside the box is our standard." />
-              <ValueCard icon={Target} title="Excellence" desc="We don't settle for anything less than perfect." />
-              <ValueCard icon={TrendingUp} title="Growth" desc="Continuous improvement for us and our clients." />
-           </div>
+      {/* 3. Core Values Bento Strip */}
+      <section className="section-padding px-6 bg-brand-purple/5">
+        <div className="max-w-7xl mx-auto">
+          <AnimatedSection className="mb-20 text-center">
+            <h2 className="text-5xl md:text-7xl font-display font-black">
+              Our Core <span className="font-serif italic text-brand-pink font-normal">Principles</span>
+            </h2>
+          </AnimatedSection>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { title: "Transparency", icon: ShieldCheck, color: "purple" },
+              { title: "Creativity", icon: Zap, color: "pink" },
+              { title: "Excellence", icon: Target, color: "teal" },
+              { title: "Growth", icon: TrendingUp, color: "yellow" }
+            ].map((value, idx) => (
+              <MagneticHelper key={idx} strength={0.15}>
+                <div className="bento-card p-10 h-full flex flex-col gap-6 text-center lg:text-left">
+                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mx-auto lg:mx-0 shadow-lg ${
+                    value.color === "purple" ? "bg-brand-purple text-white" :
+                    value.color === "pink" ? "bg-brand-pink text-white" :
+                    value.color === "teal" ? "bg-brand-teal text-white" :
+                    "bg-brand-yellow text-white"
+                  }`}>
+                    <value.icon size={28} />
+                  </div>
+                  <h4 className="text-2xl font-display font-black text-brand-dark">{value.title}</h4>
+                  <div className="h-1 w-12 bg-gray-100 rounded-full lg:mx-0 mx-auto" />
+                </div>
+              </MagneticHelper>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 4. Final CTA */}
+      <section className="py-32 px-6">
+        <div className="max-w-7xl mx-auto text-center">
+          <AnimatedSection className="space-y-12">
+            <h3 className="text-4xl md:text-6xl font-display font-black text-brand-dark">
+              Ready to <span className="text-brand-purple">Transform</span> Together?
+            </h3>
+            <div className="flex justify-center">
+              <MagneticHelper strength={0.3}>
+                <Link href="/contact" className="btn-gradient px-16 py-6 text-xl">
+                  Start the Journey
+                </Link>
+              </MagneticHelper>
+            </div>
+          </AnimatedSection>
         </div>
       </section>
     </div>

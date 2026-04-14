@@ -1,9 +1,10 @@
-import { Syne, DM_Sans } from "next/font/google";
+import { Syne, DM_Sans, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollProgressBar from "@/components/ScrollProgressBar";
 import BackToTop from "@/components/BackToTop";
+import CustomCursor from "@/components/CustomCursor";
 
 const syne = Syne({
   variable: "--font-display",
@@ -15,6 +16,13 @@ const dmSans = DM_Sans({
   variable: "--font-body",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+});
+
+const playfair = Playfair_Display({
+  variable: "--font-serif",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  style: ["normal", "italic"],
 });
 
 export const metadata = {
@@ -33,9 +41,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${syne.variable} ${dmSans.variable} h-full antialiased scroll-smooth`}
+      className={`${syne.variable} ${dmSans.variable} ${playfair.variable} h-full antialiased scroll-smooth`}
     >
-      <body className="min-h-full font-body text-brand-gray bg-white selection:bg-brand-purple/20 flex flex-col">
+      <body className="min-h-full font-body text-brand-gray bg-white selection:bg-brand-purple/20 flex flex-col mesh-bg noise-overlay">
+        <CustomCursor />
         <ScrollProgressBar />
         <Navbar />
         <main className="flex-grow">

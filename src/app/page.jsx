@@ -2,20 +2,16 @@
 
 import HeroSection from "@/components/HeroSection";
 import StatsCounter from "@/components/StatsCounter";
-import ServiceCard from "@/components/ServiceCard";
+import BentoServices from "@/components/BentoServices";
 import AnimatedSection from "@/components/AnimatedSection";
 import PricingCard from "@/components/PricingCard";
+import MagneticHelper from "@/components/MagneticHelper";
 import { 
-  Search, 
-  Target, 
-  Share2, 
-  Mail, 
-  FileText, 
-  Layers, 
   Zap, 
   BarChart3, 
   Globe, 
-  TrendingUp 
+  TrendingUp,
+  ArrowRight
 } from "lucide-react";
 import Link from "next/link";
 
@@ -24,15 +20,6 @@ const stats = [
   { value: 6, suffix: "", label: "Core Services", color: "pink" },
   { value: 3, suffix: "", label: "Flexible Plans", color: "teal" },
   { value: 100, suffix: "%", label: "Result-Driven", color: "yellow" },
-];
-
-const services = [
-  { id: 1, title: "SEO", icon: Search, color: "purple", desc: "Optimize your website to rank higher and drive organic traffic." },
-  { id: 2, title: "PPC Advertising", icon: Target, color: "pink", desc: "Maximize ROI with precision-targeted paid campaigns." },
-  { id: 3, title: "Social Media Marketing", icon: Share2, color: "teal", desc: "Build loyal audiences on Instagram, FB, and LinkedIn." },
-  { id: 4, title: "Email Marketing", icon: Mail, color: "yellow", desc: "High-converting campaigns that nurture leads and drive sales." },
-  { id: 5, title: "Content Marketing", icon: FileText, color: "purple", desc: "Compelling blogs and videos that establish authority." },
-  { id: 6, title: "360° Branding", icon: Layers, color: "pink", desc: "Holistic approach to brand identity and strategy." },
 ];
 
 const features = [
@@ -49,7 +36,7 @@ export default function Home() {
       <HeroSection />
 
       {/* 2. Stats Bar */}
-      <section className="bg-bg-mint py-12 border-y border-brand-teal/5">
+      <section className="bg-white py-12 border-y border-gray-100">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 lg:grid-cols-4 gap-8">
           {stats.map((stat, idx) => (
             <StatsCounter key={idx} {...stat} />
@@ -57,46 +44,27 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 3. Services Overview */}
-      <section className="section-padding bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <AnimatedSection className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-display font-black mb-4">
-              What We Do <span className="text-brand-purple">Best</span>
-            </h2>
-            <div className="h-1.5 w-24 bg-gradient-to-r from-brand-purple to-brand-pink mx-auto rounded-full" />
-          </AnimatedSection>
+      {/* 3. Services Overview (Bento) */}
+      <BentoServices />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, idx) => (
-              <ServiceCard 
-                key={service.id} 
-                {...service} 
-                delay={idx * 0.1} 
-                description={service.desc}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 4. About Teaser */}
-      <section className="section-padding bg-bg-soft overflow-hidden">
+      {/* 4. About Teaser (Editorial) */}
+      <section className="section-padding bg-bg-soft overflow-hidden mesh-bg">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           <AnimatedSection direction="left">
-            <h2 className="text-4xl md:text-5xl font-display font-black mb-6 leading-tight text-brand-dark">
+            <h2 className="text-5xl md:text-7xl font-display font-black mb-8 leading-[1.1] text-brand-dark">
               Your Trusted <br />
-              <span className="text-brand-pink">Digital Partner</span>
+              <span className="font-serif italic text-brand-teal">Digital Partner</span>
             </h2>
-            <p className="text-brand-gray text-lg mb-8 leading-relaxed">
-              Welcome to EndlessInfosys, your trusted partner in the digital marketing landscape. 
+            <p className="text-brand-gray/80 text-xl mb-10 leading-relaxed max-w-lg font-medium">
               We are a dynamic and innovative digital marketing company dedicated to helping 
-              businesses thrive in the digital age. 
+              businesses thrive in the digital age. We blend strategy with soulful design.
             </p>
-            <Link href="/about" className="inline-flex items-center gap-2 font-bold text-brand-purple group">
-              Learn More About Us
-              <div className="w-8 h-[2px] bg-brand-purple group-hover:w-12 transition-all" />
-            </Link>
+            <MagneticHelper strength={0.2}>
+              <Link href="/about" className="group flex items-center gap-4 text-xl font-display font-bold text-brand-purple">
+                <span>Discover the Endless Story</span>
+                <div className="w-12 h-[2px] bg-brand-purple group-hover:w-20 transition-all duration-500" />
+              </Link>
+            </MagneticHelper>
           </AnimatedSection>
 
           <AnimatedSection direction="right" className="relative group">
