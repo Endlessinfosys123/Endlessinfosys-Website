@@ -19,15 +19,22 @@
   --color-brand-gray: var(--brand-gray);
   --color-bg-soft: var(--bg-soft);
   
-  --font-display: var(--font-syne), sans-serif;
-  --font-serif: var(--font-playfair), serif;
-  --font-body: var(--font-dm-sans), sans-serif;
+  --font-display: var(--font-outfit), sans-serif;
+  --font-serif: var(--font-bricolage), sans-serif;
+  --font-body: var(--font-plus_jakarta_sans), sans-serif;
 }
 
 @layer base {
   body {
     @apply bg-white text-brand-dark selection:bg-brand-purple selection:text-white;
-    font-family: var(--font-dm-sans), sans-serif;
+    font-family: var(--font-plus_jakarta_sans), sans-serif;
+    letter-spacing: -0.01em;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-outfit), sans-serif;
+    letter-spacing: -0.03em;
   }
 }
 
@@ -118,5 +125,18 @@
   @keyframes spin-slow {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
+  }
+
+  /* Creative Typography Utilities */
+  .tracking-tight-heading {
+    letter-spacing: -0.05em;
+  }
+
+  .tracking-creative-wide {
+    letter-spacing: 0.15em;
+  }
+
+  .leading-architectural {
+    line-height: 1.1;
   }
 }

@@ -86,12 +86,12 @@ export default function HeroSection() {
           </motion.div>
 
           {/* Main Kinetic Typography */}
-          <div className="space-y-4">
-            <h1 className="text-7xl md:text-[140px] font-display font-black leading-[0.8] tracking-tighter text-brand-dark flex flex-col">
+          <div className="space-y-6">
+            <h1 className="text-7xl md:text-[150px] font-display font-black leading-[0.8] tracking-tighter text-brand-dark flex flex-col">
               <KineticTitle text="CRAFTING" delayOffset={0.1} />
-              <div className="flex flex-wrap items-baseline gap-4">
+              <div className="flex flex-wrap items-baseline gap-6">
                 <KineticTitle text="DIGITAL" delayOffset={0.3} />
-                <span className="font-serif italic font-normal text-brand-purple text-shimmer">Excellence</span>
+                <span className="font-serif italic text-brand-purple text-shimmer selection:text-white">Excellence</span>
               </div>
             </h1>
             

@@ -1,4 +1,4 @@
-import { Syne, Plus_Jakarta_Sans, Playfair_Display } from "next/font/google";
+import { Outfit, Plus_Jakarta_Sans, Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -6,10 +6,10 @@ import ScrollProgressBar from "@/components/ScrollProgressBar";
 import BackToTop from "@/components/BackToTop";
 import CustomCursor from "@/components/CustomCursor";
 
-const syne = Syne({
+const outfit = Outfit({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700", "800", "900"],
 });
 
 const plusJakarta = Plus_Jakarta_Sans({
@@ -18,11 +18,10 @@ const plusJakarta = Plus_Jakarta_Sans({
   weight: ["400", "500", "600", "700", "800"],
 });
 
-const playfair = Playfair_Display({
-  variable: "--font-serif",
+const bricolage = Bricolage_Grotesque({
+  variable: "--font-creative",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
-  style: ["normal", "italic"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 export const metadata = {
@@ -41,7 +40,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${syne.variable} ${plusJakarta.variable} ${playfair.variable} h-full antialiased scroll-smooth`}
+      className={`${outfit.variable} ${plusJakarta.variable} ${bricolage.variable} h-full antialiased scroll-smooth`}
     >
       <body className="min-h-full font-body text-brand-gray bg-white selection:bg-brand-purple/20 flex flex-col mesh-bg noise-overlay">
         <CustomCursor />
