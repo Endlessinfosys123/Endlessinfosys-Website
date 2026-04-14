@@ -77,23 +77,36 @@ const ServiceCard = ({ service, index }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.1 }}
-      className={`${service.size} group min-h-[200px] bento-card p-8 flex flex-col justify-between hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer`}
+      className={`${service.size} group min-h-[200px] bento-card p-10 flex flex-col justify-between hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer relative overflow-hidden shadow-glow-purple`}
     >
-      <div className="flex justify-between items-start">
-        <div className={`p-4 rounded-2xl bg-gradient-to-br ${service.color} text-white shadow-lg`}>
-          <Icon size={24} />
-        </div>
-        <div className="w-12 h-12 rounded-full border border-gray-100 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
+      <div className="flex justify-between items-start relative z-10">
+        <motion.div 
+          animate={{ 
+            y: [0, -8, 0],
+            rotate: [0, 5, 0]
+          }}
+          transition={{ 
+            duration: 4, 
+            repeat: Infinity, 
+            ease: "easeInOut",
+            delay: index * 0.2
+          }}
+          className={`p-5 rounded-3xl bg-gradient-to-br ${service.color} text-white shadow-2xl relative z-10`}
+        >
+          <Icon size={32} />
+        </motion.div>
+        <div className="w-12 h-12 rounded-full border border-gray-100 flex items-center justify-center translate-x-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500">
+          <ArrowRight size={20} className="text-brand-purple" />
         </div>
       </div>
       
-      <div className="space-y-2 mt-4">
-        <h3 className="text-xl font-display font-bold text-brand-dark">{service.title}</h3>
-        <p className="text-sm text-brand-gray/70 leading-relaxed">{service.description}</p>
+      <div className="space-y-4 mt-8 relative z-10">
+        <h3 className="text-2xl font-display font-black text-brand-dark leading-tight group-hover:text-brand-purple transition-colors">{service.title}</h3>
+        <p className="text-brand-gray/60 font-medium leading-relaxed">{service.description}</p>
       </div>
+
+      {/* Subtle Background Glow */}
+      <div className={`absolute -bottom-10 -right-10 w-40 h-40 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-5 blur-[60px] transition-opacity duration-700`} />
     </motion.div>
   );
 };
