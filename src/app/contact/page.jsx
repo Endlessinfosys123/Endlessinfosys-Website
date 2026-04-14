@@ -108,8 +108,8 @@ export default function ContactPage() {
             <BentoContactItem 
               icon={Phone} 
               title="Global Outreach" 
-              value="+91 63561 95625" 
-              href="tel:+916356195625" 
+              value="+91 7383095625" 
+              href="tel:+917383095625" 
               color="purple" 
               index={0}
             />

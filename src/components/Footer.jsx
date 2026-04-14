@@ -54,7 +54,7 @@ const footerLinks = {
     { name: "360° Branding", href: "/services/branding" },
   ],
   contact: [
-    { icon: Phone, text: "+91 6356195625", href: "tel:+916356195625" },
+    { icon: Phone, text: "+91 7383095625", href: "tel:+917383095625" },
     { icon: Mail, text: "info.endlessinfosys@gmail.com", href: "mailto:info.endlessinfosys@gmail.com" },
     { icon: Share2, text: "@endlessinfosys", href: "https://instagram.com/endlessinfosys" },
     { icon: MapPin, text: "Gandhinagar, Gujarat, India", href: "#" },
