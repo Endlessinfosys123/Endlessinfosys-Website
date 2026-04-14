@@ -79,8 +79,9 @@ export default function ContactPage() {
               Let's <br />
               <span className="font-serif italic text-brand-purple font-normal">Connect</span>
             </h1>
-            <p className="text-brand-gray/80 text-xl md:text-2xl max-w-2xl mx-auto font-medium">
-              Ready to architect your digital success? Our team of specialists is standing by to transform your vision into reality.
+            <p className="text-brand-gray/80 text-xl md:text-2xl max-w-3xl mx-auto font-medium leading-relaxed">
+              Ready to architect your digital success? Our team of specialists is standing by to transform 
+              your vision into a high-performance reality through our proprietary 'Secure Channel' strategic audit.
             </p>
           </AnimatedSection>
         </div>

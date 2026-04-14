@@ -46,12 +46,12 @@ const footerLinks = {
     { name: "Contact Us", href: "/contact" },
   ],
   services: [
-    { name: "SEO Optimization", href: "/services" },
-    { name: "PPC Advertising", href: "/services" },
-    { name: "Social Media marketing", href: "/services" },
-    { name: "Email Marketing", href: "/services" },
-    { name: "Content Marketing", href: "/services" },
-    { name: "360° Branding", href: "/services" },
+    { name: "Search Intelligence", href: "/services/seo" },
+    { name: "Precision Ads", href: "/services/ppc" },
+    { name: "Social Narratives", href: "/services/social-media" },
+    { name: "Email Marketing", href: "/services/email-marketing" },
+    { name: "Creative Content", href: "/services/content-marketing" },
+    { name: "360° Branding", href: "/services/branding" },
   ],
   contact: [
     { icon: Phone, text: "+91 6356195625", href: "tel:+916356195625" },
@@ -72,8 +72,10 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="flex flex-col gap-6">
             <Logo />
-            <p className="text-brand-gray text-sm leading-relaxed">
-              Let's Craft Your Digital Success Story. We are the architects of your online success, dedicated to helping businesses thrive in the digital age.
+            <p className="text-brand-gray text-sm leading-relaxed font-medium">
+              We are the architects of your online success. At EndlessInfosys, we blend predictive analytics with 
+              cinematic storytelling to build immersive digital ecosystems that help brands dominate their industry 
+              in the high-velocity digital age.
             </p>
           </div>
 
