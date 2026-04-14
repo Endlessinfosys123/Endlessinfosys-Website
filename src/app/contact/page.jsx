@@ -145,31 +145,34 @@ export default function ContactPage() {
       </section>
 
       {/* 3. Global Reach Banner */}
-      <section className="py-24 bg-brand-dark overflow-hidden relative">
-        <div className="absolute inset-0 opacity-10 bg-mesh" />
+      <section className="py-32 bg-white overflow-hidden relative">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[600px] bg-gradient-to-r from-brand-purple/5 via-brand-pink/5 to-brand-teal/5 blur-[120px] rounded-full animate-pulse" />
         <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white/60 text-xs font-bold uppercase tracking-widest">
-                <Globe size={14} /> Global Solutions
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <div className="space-y-8">
+              <div className="inline-flex items-center gap-2 px-6 py-2 rounded-full glass-card border-brand-teal/20 text-brand-teal text-xs font-black uppercase tracking-widest cursor-default">
+                <Globe size={16} className="animate-spin-slow" /> Kinetic connectivity
               </div>
-              <h3 className="text-4xl md:text-6xl font-display font-black text-white leading-[1.1]">
+              <h3 className="text-5xl md:text-8xl font-display font-black text-brand-dark leading-[0.85]">
                 Serving Brands <br />
-                <span className="font-serif italic text-brand-teal font-normal">Everywhere</span>
+                <span className="font-serif italic text-brand-purple font-normal">Everywhere</span>
               </h3>
             </div>
             
-            <div className="bg-white/5 backdrop-blur-xl p-10 rounded-[40px] border border-white/10 space-y-6">
-              <p className="text-white/80 text-xl font-medium leading-relaxed">
+            <div className="glass-card p-12 md:p-16 space-y-8 shadow-glow-teal border-brand-teal/10 relative group">
+              <div className="absolute -top-10 -right-10 w-24 h-24 bg-brand-teal/10 blur-2xl rounded-full group-hover:scale-150 transition-transform duration-700" />
+              <p className="text-brand-gray/80 text-xl font-medium leading-relaxed">
                 Our collaborative architecture allows us to work with visionaries worldwide. 
                 Whether you're local in Gandhinagar or across the ocean, we architect 
-                your path to the top.
+                your path to the absolute top.
               </p>
-              <div className="flex items-center gap-6">
+              <div className="flex items-center gap-6 pt-4">
                 <MagneticHelper strength={0.3}>
-                  <Link href="/about" className="group flex items-center gap-3 font-display font-bold text-white hover:text-brand-teal transition-colors">
-                    <span>Learn How We Scale</span>
-                    <ArrowRight className="group-hover:translate-x-2 transition-transform" />
+                  <Link href="/about" className="group flex items-center gap-4 font-display font-black text-brand-dark hover:text-brand-purple transition-all text-sm uppercase tracking-widest">
+                    <span>Learn Methodology</span>
+                    <div className="w-12 h-12 rounded-full border-2 border-brand-dark/5 flex items-center justify-center group-hover:bg-brand-purple group-hover:text-white group-hover:border-brand-purple transition-all">
+                      <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                    </div>
                   </Link>
                 </MagneticHelper>
               </div>

@@ -181,21 +181,20 @@ export default function PricingPage() {
       </section>
 
       {/* 3. Note Banner */}
-      <section className="py-20 bg-brand-dark text-white overflow-hidden relative">
-        <div className="absolute inset-0 opacity-10 bg-mesh" />
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="bg-white/5 backdrop-blur-xl rounded-[40px] p-12 border border-white/10 flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="flex flex-col md:flex-row items-center gap-6 text-center md:text-left">
-              <div className="w-16 h-16 rounded-3xl bg-brand-yellow flex items-center justify-center text-brand-dark shadow-2xl shadow-brand-yellow/20">
-                <Lightbulb size={32} />
+      <section className="py-24 px-6 overflow-hidden relative">
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="bg-gradient-to-r from-brand-purple/10 via-brand-pink/10 to-brand-teal/10 backdrop-blur-3xl rounded-[60px] p-12 md:p-20 border border-white shadow-glow-purple flex flex-col md:flex-row items-center justify-between gap-12 group">
+            <div className="flex flex-col md:flex-row items-center gap-8 text-center md:text-left">
+              <div className="w-20 h-20 rounded-3xl bg-white shadow-2xl flex items-center justify-center text-brand-purple group-hover:scale-110 transition-transform duration-500">
+                <Lightbulb size={40} />
               </div>
-              <div className="space-y-1">
-                <h3 className="text-2xl font-display font-black">Custom Architectures?</h3>
-                <p className="text-white/60 font-medium">Tell us your budget and we'll craft a bespoke strategy.</p>
+              <div className="space-y-2">
+                <h3 className="text-3xl md:text-4xl font-display font-black text-brand-dark">Custom Architectures?</h3>
+                <p className="text-brand-gray/60 font-medium text-lg">Tell us your budget and we'll craft a bespoke strategy for your dominance.</p>
               </div>
             </div>
             <MagneticHelper strength={0.3}>
-              <Link href="/contact" className="px-10 py-5 rounded-2xl bg-white text-brand-dark font-display font-black hover:scale-105 transition-all">
+              <Link href="/contact" className="btn-gradient">
                 Let's Customize
               </Link>
             </MagneticHelper>

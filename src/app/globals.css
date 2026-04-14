@@ -1,171 +1,122 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Syne:wght@400..800&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
-
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #1A1A2E;
-  
-  --brand-purple: #6C47FF;
-  --brand-pink: #FF4D6D;
-  --brand-teal: #00C9A7;
-  --brand-yellow: #FFB830;
-  --brand-dark: #1A1A2E;
-  --brand-gray: #374151;
-  
-  --bg-lavender: #F3F0FF;
-  --bg-mint: #F0FFF8;
-  --bg-cream: #FFFDE7;
-  --bg-soft: #FAFAFA;
-
-  --gradient-primary: linear-gradient(135deg, #6C47FF 0%, #FF4D6D 100%);
-  --gradient-teal: linear-gradient(135deg, #00C9A7 0%, #6C47FF 100%);
-
-  --font-serif: "Playfair Display", serif;
+  --brand-purple: #6c47ff;
+  --brand-pink: #ff4d6d;
+  --brand-teal: #00c9a7;
+  --brand-yellow: #ffb830;
+  --brand-dark: #1a1a1a;
+  --brand-gray: #666666;
+  --bg-soft: #f8fafc;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  
+@theme {
   --color-brand-purple: var(--brand-purple);
   --color-brand-pink: var(--brand-pink);
   --color-brand-teal: var(--brand-teal);
   --color-brand-yellow: var(--brand-yellow);
-
-  --font-serif: var(--font-serif);
   --color-brand-dark: var(--brand-dark);
   --color-brand-gray: var(--brand-gray);
-  
-  --color-bg-lavender: var(--bg-lavender);
-  --color-bg-mint: var(--bg-mint);
-  --color-bg-cream: var(--bg-cream);
   --color-bg-soft: var(--bg-soft);
-
-  --font-body: var(--font-dm-sans), ui-sans-serif, system-ui;
-  --font-display: var(--font-syne), ui-sans-serif, system-ui;
   
-  --radius-pill: 50px;
-  --radius-xl: 12px;
-  --radius-2xl: 16px;
-  --radius-3xl: 24px;
+  --font-display: var(--font-syne), sans-serif;
+  --font-serif: var(--font-playfair), serif;
+  --font-body: var(--font-dm-sans), sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-white text-brand-dark selection:bg-brand-purple selection:text-white;
+    font-family: var(--font-dm-sans), sans-serif;
+  }
+}
+
+@layer components {
+  .section-padding {
+    @apply py-24 md:py-32;
+  }
+
+  .btn-gradient {
+    @apply bg-gradient-to-r from-brand-purple via-brand-pink to-brand-teal text-white font-display font-black px-10 py-5 rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-[0_10px_40px_rgba(108,71,255,0.3)] active:scale-95 text-base uppercase tracking-widest;
+  }
+
+  .bento-card {
+    @apply bg-white/40 backdrop-blur-xl border border-white rounded-[40px] shadow-[0_20px_60px_rgba(0,0,0,0.05)] transition-all duration-500 overflow-hidden;
+  }
   
-  --animate-float: float 6s ease-in-out infinite;
-  --animate-typing: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
-  --animate-blob: blob 7s infinite;
-
-  @keyframes float {
-    0%, 100% { transform: translateY(0) rotate(0); }
-    50% { transform: translateY(-15px) rotate(2deg); }
+  .glass-card {
+    @apply bg-white/60 backdrop-blur-2xl border border-white rounded-[40px] shadow-[0_30px_80px_rgba(0,0,0,0.06)];
   }
-  @keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
+
+  .shadow-glow-purple { @apply shadow-[0_0_50px_rgba(108,71,255,0.12)]; }
+  .shadow-glow-pink { @apply shadow-[0_0_50px_rgba(255,77,109,0.12)]; }
+  .shadow-glow-teal { @apply shadow-[0_0_50px_rgba(0,201,167,0.12)]; }
+}
+
+@layer utilities {
+  .mesh-bg {
+    background: 
+      radial-gradient(at 0% 0%, rgba(108,71,255,0.1) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(255,77,109,0.1) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(0,201,167,0.1) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, rgba(255,184,48,0.1) 0px, transparent 50%),
+      #ffffff;
   }
-  @keyframes blink-caret {
-    from, to { border-color: transparent }
-    50% { border-color: var(--brand-purple); }
-  }
-  @keyframes blob {
-    0% { transform: translate(0, 0) scale(1); }
-    33% { transform: translate(30px, -50px) scale(1.1); }
-    66% { transform: translate(-20px, 20px) scale(0.9); }
-    100% { transform: translate(0, 0) scale(1); }
-  }
-}
 
-body {
-  background: var(--background);
-  color: var(--brand-gray);
-  font-family: var(--font-body);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-display);
-  color: var(--brand-dark);
-  font-weight: 700;
-  line-height: 1.2;
-}
-
-.text-gradient {
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.bg-mesh {
-  background-color: #ffffff;
-  background-image: 
-    radial-gradient(at 0% 0%, rgba(108, 71, 255, 0.08) 0px, transparent 50%),
-    radial-gradient(at 100% 0%, rgba(255, 77, 109, 0.08) 0px, transparent 50%),
-    radial-gradient(at 100% 100%, rgba(0, 201, 167, 0.05) 0px, transparent 50%),
-    radial-gradient(at 0% 100%, rgba(255, 184, 48, 0.05) 0px, transparent 50%);
-}
-
-.btn-pill {
-  @apply px-8 py-3 rounded-pill font-semibold transition-all duration-300 hover:scale-105 active:scale-95;
-}
-
-.btn-gradient {
-  @apply btn-pill text-white shadow-lg hover:shadow-brand-purple/20;
-  background: var(--gradient-primary);
-}
-
-.btn-outline-teal {
-  @apply btn-pill border-2 border-brand-teal text-brand-teal hover:bg-brand-teal/5;
-}
-
-@utility btn-pill {
-  @apply px-8 py-3 rounded-pill font-semibold transition-all duration-300 hover:scale-105 active:scale-95;
-}
-
-@utility btn-gradient {
-  @apply btn-pill text-white shadow-lg hover:shadow-brand-purple/20;
-  background: var(--gradient-primary);
-}
-
-@utility btn-outline-teal {
-  @apply btn-pill border-2 border-brand-teal text-brand-teal hover:bg-brand-teal/5;
-}
-
-@utility clip-diagonal {
-  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-}
-
-@utility glass-card {
-  @apply bg-white/80 backdrop-blur-md border border-white shadow-xl shadow-gray-200/50;
-}
-
-@utility section-padding {
-  @apply py-20 md:py-32;
-}
-
-@utility bento-card {
-  @apply relative overflow-hidden rounded-3xl border border-gray-100 bg-white/50 backdrop-blur-md transition-all duration-500 hover:border-brand-purple/30 hover:shadow-2xl hover:shadow-brand-purple/5;
-}
-
-@utility noise-overlay {
-  position: relative;
-  &::after {
+  .noise-overlay::before {
     content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 10;
-    opacity: 0.03;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.015;
     pointer-events: none;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    background-repeat: repeat;
+    z-index: 9999;
   }
-}
 
-@utility mesh-bg {
-  background-color: #FAFAFA;
-  background-image: 
-    radial-gradient(at 0% 0%, hsla(253,100%,93%,1) 0, transparent 50%), 
-    radial-gradient(at 50% 0%, hsla(225,100%,93%,1) 0, transparent 50%), 
-    radial-gradient(at 100% 0%, hsla(339,100%,93%,1) 0, transparent 50%);
+  .text-outline {
+    -webkit-text-stroke: 1.5px currentColor;
+    color: transparent;
+  }
+
+  .text-shimmer {
+    background: linear-gradient(
+      to right,
+      #1a1a1a 20%,
+      #6c47ff 40%,
+      #ff4d6d 60%,
+      #1a1a1a 80%
+    );
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: shimmer 8s linear infinite;
+  }
+
+  @keyframes shimmer {
+    to { background-position: 200% center; }
+  }
+
+  .animate-blob {
+    animation: blob 10s infinite;
+  }
+
+  @keyframes blob {
+    0% { transform: translate(0px, 0px) scale(1); }
+    33% { transform: translate(50px, -80px) scale(1.1); }
+    66% { transform: translate(-40px, 40px) scale(0.9); }
+    100% { transform: translate(0px, 0px) scale(1); }
+  }
+
+  .animate-spin-slow {
+    animation: spin-slow 20s linear infinite;
+  }
+
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
 }

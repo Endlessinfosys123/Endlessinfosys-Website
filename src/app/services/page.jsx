@@ -154,36 +154,41 @@ export default function ServicesPage() {
       </section>
 
       {/* 3. The Methodology Section */}
-      <section className="section-padding px-6 bg-brand-dark overflow-hidden relative">
-        <div className="absolute inset-0 opacity-10 bg-mesh" />
+      <section className="section-padding px-6 bg-bg-soft relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-brand-purple/5 blur-[120px] rounded-full translate-x-1/2 -translate-y-1/2" />
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 items-center">
             <div className="lg:col-span-4 space-y-8">
-              <h2 className="text-5xl md:text-7xl font-display font-black text-white leading-tight">
+              <h2 className="text-5xl md:text-7xl font-display font-black text-brand-dark leading-tight">
                 Our <br />
                 <span className="font-serif italic text-brand-purple font-normal">Symphony</span>
               </h2>
-              <p className="text-white/60 text-xl font-medium leading-relaxed">
+              <p className="text-brand-gray/60 text-xl font-medium leading-relaxed">
                 Standard output is common. We deliver precision-engineered impact through a calculated 5-phase evolution.
               </p>
             </div>
 
             <div className="lg:col-span-8">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 {[
-                  { name: "Discover", icon: Search, color: "bg-brand-purple", tagline: "Data Liquidation" },
-                  { name: "Strategize", icon: Lightbulb, color: "bg-brand-pink", tagline: "Algorithm Sculpting" },
-                  { name: "Execute", icon: Rocket, color: "bg-brand-teal", tagline: "Kinetic Launch" },
-                  { name: "Optimize", icon: Cpu, color: "bg-brand-yellow", tagline: "Real-time Refinement" },
-                  { name: "Scale", icon: TrendingUp, color: "bg-brand-purple", tagline: "Limitless Growth" }
+                  { name: "Discover", icon: Search, color: "purple", tagline: "Data Liquidation" },
+                  { name: "Strategize", icon: Lightbulb, color: "pink", tagline: "Algorithm Sculpting" },
+                  { name: "Execute", icon: Rocket, color: "teal", tagline: "Kinetic Launch" },
+                  { name: "Optimize", icon: Cpu, color: "yellow", tagline: "Real-time Refinement" },
+                  { name: "Scale", icon: TrendingUp, color: "purple", tagline: "Limitless Growth" }
                 ].map((step, idx) => (
                   <AnimatedSection key={idx} delay={idx * 0.1}>
-                    <div className="flex flex-col items-center lg:items-start group">
-                      <div className={`w-20 h-20 rounded-3xl ${step.color} flex items-center justify-center text-white shadow-2xl transition-all duration-500 group-hover:rotate-12`}>
+                    <div className="glass-card p-10 flex flex-col items-center lg:items-start group hover:-translate-y-2 transition-transform duration-500 shadow-glow-purple">
+                      <div className={`w-16 h-16 rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:scale-110 ${
+                        step.color === 'purple' ? 'bg-brand-purple/10 text-brand-purple' :
+                        step.color === 'pink' ? 'bg-brand-pink/10 text-brand-pink' :
+                        step.color === 'teal' ? 'bg-brand-teal/10 text-brand-teal' :
+                        'bg-brand-yellow/10 text-brand-yellow'
+                      }`}>
                         <step.icon size={32} />
                       </div>
-                      <h4 className="mt-6 text-2xl font-display font-black text-white">{step.name}</h4>
-                      <p className="text-white/40 font-serif italic text-sm mt-1">{step.tagline}</p>
+                      <h4 className="mt-6 text-2xl font-display font-black text-brand-dark">{step.name}</h4>
+                      <p className="text-brand-gray/40 font-serif italic text-sm mt-1">{step.tagline}</p>
                     </div>
                   </AnimatedSection>
                 ))}

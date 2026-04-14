@@ -145,20 +145,20 @@ export default function AboutPage() {
 
             <motion.div 
               whileHover={{ y: -10 }}
-              className="p-12 md:p-16 rounded-[60px] bg-brand-dark text-white shadow-2xl flex flex-col justify-between"
+              className="p-12 md:p-16 rounded-[60px] glass-card flex flex-col justify-between group shadow-glow-teal"
             >
               <div className="space-y-8">
-                <div className="w-20 h-20 rounded-3xl bg-white/10 flex items-center justify-center text-white">
+                <div className="w-20 h-20 rounded-3xl bg-brand-teal/10 flex items-center justify-center text-brand-teal group-hover:bg-brand-teal group-hover:text-white transition-all duration-500">
                   <Target size={40} />
                 </div>
-                <h3 className="text-4xl font-display font-black text-white">Our Mission</h3>
-                <p className="text-white/60 text-xl leading-relaxed font-medium">
+                <h3 className="text-4xl font-display font-black text-brand-dark">Our Mission</h3>
+                <p className="text-brand-gray/80 text-xl leading-relaxed font-medium">
                   To empower brands with the digital precision they need to excel. 
                   We aim to be the catalyst for your digital success story, scaling with your ambition.
                 </p>
               </div>
               <div className="mt-12 flex justify-end">
-                <ArrowUpRight size={48} className="text-white/10" />
+                <ArrowUpRight size={48} className="text-brand-teal/20 group-hover:text-brand-teal transition-colors" />
               </div>
             </motion.div>
           </div>

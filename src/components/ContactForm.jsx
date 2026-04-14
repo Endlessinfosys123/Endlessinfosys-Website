@@ -109,8 +109,8 @@ export default function ContactForm() {
           <MagneticHelper strength={0.3}>
             <button 
               type="submit" 
-              className={`px-12 py-6 rounded-2xl font-display font-black text-xl transition-all ${
-                isSubmitted ? "bg-brand-teal text-white" : "bg-brand-dark text-white hover:bg-brand-purple shadow-2xl shadow-brand-dark/20"
+              className={`px-12 py-6 rounded-2xl font-display font-black text-xl transition-all shadow-2xl ${
+                isSubmitted ? "bg-brand-teal text-white" : "btn-gradient shadow-glow-purple"
               }`}
             >
               {isSubmitted ? "Project Queued" : "Initialize Success"}
