@@ -1,20 +1,18 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Phone, Mail, Share2, MapPin } from "lucide-react";
 
 const Logo = () => (
   <div className="flex items-center gap-2">
-    <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M50 50L50 10C50 10 90 10 90 50L50 50Z" fill="#6C47FF" />
-      <path d="M50 50L90 50C90 50 90 90 50 90L50 50Z" fill="#FF4D6D" />
-      <path d="M50 50L50 90C50 90 10 90 10 50L50 50Z" fill="#00C9A7" />
-      <path d="M50 50L10 50C10 50 10 10 50 10L50 50Z" fill="#FFB830" />
-      <circle cx="50" cy="50" r="8" fill="white" />
-    </svg>
-    <div className="flex flex-col">
-      <span className="font-display font-bold text-lg leading-none text-brand-dark">EndlessInfosys</span>
-      <span className="text-[8px] font-bold tracking-[0.2em] uppercase text-brand-purple">by QUANTIFYRE</span>
+    <div className="relative h-12 w-48">
+      <Image 
+        src="/images/logo-horizontal.png" 
+        alt="EndlessInfosys Logo" 
+        fill
+        className="object-contain"
+      />
     </div>
   </div>
 );

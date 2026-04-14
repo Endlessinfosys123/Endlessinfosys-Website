@@ -22,6 +22,10 @@ export const metadata: Metadata = {
   title: "EndlessInfosys | We Are the Architects of Your Online Success",
   description: "Let's Craft Your Digital Success Story. Expert digital marketing services in Gandhinagar, Gujarat. SEO, PPC, Social Media, and more.",
   keywords: ["Digital Marketing", "SEO", "PPC", "Social Media Marketing", "EndlessInfosys", "Gandhinagar", "Gujarat"],
+  icons: {
+    icon: "/images/logo-square.png",
+    apple: "/images/logo-square.png",
+  },
 };
 
 export default function RootLayout({
