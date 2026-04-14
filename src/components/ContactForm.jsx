@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 
+import MagneticHelper from "./MagneticHelper";
+
 export default function ContactForm() {
   const [formData, setFormData] = useState({
     name: "",
@@ -12,6 +14,8 @@ export default function ContactForm() {
     service: "SEO",
     message: ""
   });
+
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const services = [
     "SEO Optimization",
@@ -28,70 +32,92 @@ export default function ContactForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsSubmitted(true);
+    setTimeout(() => setIsSubmitted(false), 3000);
     console.log("Form Submitted:", formData);
-    // Add submission logic here (e.g., Supabase, EmailJS, etc.)
   };
 
   const InputField = ({ label, name, type = "text" }) => (
-    <div className="relative group mb-8">
+    <div className="relative group mb-10">
       <input
         type={type}
         name={name}
         value={formData[name]}
         onChange={handleChange}
         required
-        className="w-full bg-transparent border-b-2 border-gray-200 py-3 focus:outline-none focus:border-brand-purple transition-all peer"
+        className="w-full bg-transparent border-b-2 border-gray-100 py-4 focus:outline-none focus:border-brand-purple transition-all peer font-medium text-brand-dark"
         placeholder=" "
       />
-      <label className={`absolute left-0 top-3 text-brand-gray transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-brand-purple ${formData[name] ? "-top-4 text-xs text-brand-purple" : "text-base"}`}>
+      <label className={`absolute left-0 top-4 text-brand-gray/60 transition-all pointer-events-none peer-placeholder-shown:text-lg peer-placeholder-shown:top-4 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-brand-purple font-medium ${formData[name] ? "-top-4 text-xs text-brand-purple" : "text-lg"}`}>
         {label}
       </label>
     </div>
   );
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white p-8 md:p-12 rounded-[40px] shadow-2xl shadow-gray-200/50 border border-gray-50">
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8">
-        <InputField label="Name" name="name" />
-        <InputField label="Business Name" name="businessName" />
-        <InputField label="Email Address" name="email" type="email" />
-        <InputField label="Phone Number" name="phone" type="tel" />
-      </div>
+    <div className="relative">
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12">
+          <InputField label="Individual Name" name="name" />
+          <InputField label="Brand/Business" name="businessName" />
+          <InputField label="Digital Post (Email)" name="email" type="email" />
+          <InputField label="Direct Line" name="phone" type="tel" />
+        </div>
 
-      <div className="relative mb-12">
-        <label className="block text-xs font-bold uppercase tracking-widest text-brand-purple mb-4">
-          Service Interested In
-        </label>
-        <select
-          name="service"
-          value={formData.service}
-          onChange={handleChange}
-          className="w-full bg-bg-soft border-none rounded-xl py-4 px-6 focus:ring-2 focus:ring-brand-purple/20 outline-none appearance-none font-semibold text-brand-dark"
-        >
-          {services.map((s) => (
-            <option key={s} value={s}>{s}</option>
-          ))}
-        </select>
-      </div>
+        <div className="relative mb-14">
+          <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-brand-purple mb-6">
+            Consultation Velocity
+          </label>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            {services.map((s) => (
+              <label 
+                key={s} 
+                className={`flex items-center justify-center p-4 rounded-2xl border-2 cursor-pointer transition-all text-xs font-bold uppercase tracking-wider ${
+                  formData.service === s ? "border-brand-purple bg-brand-purple/5 text-brand-purple" : "border-gray-50 bg-white text-brand-gray/40 hover:border-gray-200"
+                }`}
+              >
+                <input 
+                  type="radio" 
+                  name="service" 
+                  value={s} 
+                  checked={formData.service === s}
+                  onChange={handleChange}
+                  className="sr-only"
+                />
+                {s.split(' ')[0]}
+              </label>
+            ))}
+          </div>
+        </div>
 
-      <div className="relative group mb-12">
-        <textarea
-          name="message"
-          value={formData.message}
-          onChange={handleChange}
-          required
-          rows={4}
-          className="w-full bg-transparent border-b-2 border-gray-200 py-3 focus:outline-none focus:border-brand-purple transition-all peer resize-none"
-          placeholder=" "
-        />
-        <label className={`absolute left-0 top-3 text-brand-gray transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-brand-purple ${formData.message ? "-top-4 text-xs text-brand-purple" : "text-base"}`}>
-          Your Message
-        </label>
-      </div>
+        <div className="relative group mb-14">
+          <textarea
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            required
+            rows={4}
+            className="w-full bg-transparent border-b-2 border-gray-100 py-4 focus:outline-none focus:border-brand-purple transition-all peer resize-none font-medium text-brand-dark"
+            placeholder=" "
+          />
+          <label className={`absolute left-0 top-4 text-brand-gray/60 transition-all pointer-events-none peer-placeholder-shown:text-lg peer-placeholder-shown:top-4 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-brand-purple font-medium ${formData.message ? "-top-4 text-xs text-brand-purple" : "text-lg"}`}>
+            Brief Your Vision
+          </label>
+        </div>
 
-      <button type="submit" className="btn-gradient w-full py-5 text-xl">
-        Send Message
-      </button>
-    </form>
+        <div className="pt-4">
+          <MagneticHelper strength={0.3}>
+            <button 
+              type="submit" 
+              className={`px-12 py-6 rounded-2xl font-display font-black text-xl transition-all ${
+                isSubmitted ? "bg-brand-teal text-white" : "bg-brand-dark text-white hover:bg-brand-purple shadow-2xl shadow-brand-dark/20"
+              }`}
+            >
+              {isSubmitted ? "Project Queued" : "Initialize Success"}
+            </button>
+          </MagneticHelper>
+        </div>
+      </form>
+    </div>
   );
 }
